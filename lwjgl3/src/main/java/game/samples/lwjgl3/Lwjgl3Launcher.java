@@ -2,7 +2,7 @@ package game.samples.lwjgl3;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import game.samples.rts03.Main;
+import game.samples.nav01.Main;
 
 /**
  * Launches the desktop (LWJGL3) application.
