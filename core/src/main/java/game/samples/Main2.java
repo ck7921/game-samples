@@ -7,6 +7,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 
+/**
+ * display a rectangle
+ */
 public class Main2 extends ApplicationAdapter {
 
     private ShapeRenderer shapeRenderer;

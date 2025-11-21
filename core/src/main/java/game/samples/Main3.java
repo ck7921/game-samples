@@ -8,6 +8,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 
+/**
+ * use cursor keys to move rectangle
+ */
 public class Main3 extends ApplicationAdapter {
 
     private ShapeRenderer shapeRenderer;

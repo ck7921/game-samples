@@ -3,6 +3,7 @@ package game.samples;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -11,9 +12,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 
 /**
- * collision detection, rectangle can't be moved outside of rectangle border
+ * demonstrate sound playback
  */
-public class Main5 extends ApplicationAdapter {
+public class Main6 extends ApplicationAdapter {
 
     private ShapeRenderer shapeRenderer;
     private SpriteBatch batch;
@@ -24,6 +25,10 @@ public class Main5 extends ApplicationAdapter {
     private float rectX, rectY;
     private float moveSpeed = 3f;
 
+    // Sound-Effect
+    private Sound collideSound;
+    private int collisionOnSide = -1;
+
     @Override
     public void create() {
         shapeRenderer = new ShapeRenderer();
@@ -33,6 +38,9 @@ public class Main5 extends ApplicationAdapter {
         rectX = 300;
         rectY = 200;
         rect = new Rectangle(rectX, rectY, 200, 200);
+        collideSound = Gdx.audio.newSound(Gdx.files.internal("laser_shooting_sfx.wav")); // laser_shooting_sfx.wav
+        collideSound.play(0);
+        collideSound.stop();
     }
 
     @Override
@@ -64,7 +72,7 @@ public class Main5 extends ApplicationAdapter {
 
         // draw text
         batch.begin();
-        font.draw(batch, "Use Cursor keys to move rectangle. Try to move outside of border.", 50, 580);
+        font.draw(batch, "Now with sound. Try to move outside of border.", 50, 580);
         batch.end();
 
     }
@@ -74,30 +82,49 @@ public class Main5 extends ApplicationAdapter {
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
             final boolean isInside = isRectInsideRect(rectX, rectY+moveSpeed, 200, 200, 35, 55, 730, 485);
             if(isInside) rectY += moveSpeed;
-                else rectY = 55 + 285;
+            else {
+                rectY = 55 + 285;
+                playSound(0);
+            }
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
             final boolean isInside = isRectInsideRect(rectX, rectY-moveSpeed, 200, 200, 35, 55, 730, 485);
             if(isInside) rectY -= moveSpeed;
-            else rectY = 55;
+            else {
+                rectY = 55;
+                playSound(1);
+            }
         }
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             final boolean isInside = isRectInsideRect(rectX-moveSpeed, rectY, 200, 200, 35, 55, 730, 485);
             if(isInside) rectX -= moveSpeed;
-            else rectX = 35;
+            else {
+                rectX = 35;
+                playSound(2);
+            }
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
             final boolean isInside = isRectInsideRect(rectX+moveSpeed, rectY, 200, 200, 35, 55, 730, 485);
             if(isInside) rectX += moveSpeed;
-            else rectX = 35 + 730-200;
+            else {
+                rectX = 35 + 730-200;
+                playSound(3);
+            }
         }
 
         // Rechteck-Position aktualisieren
         rect.setPosition(rectX, rectY);
     }
 
+    private void playSound(int side) {
+        if(collisionOnSide!=side) {
+            collisionOnSide = side;
+            collideSound.play(1.0f); // 1.0f = volle Lautstärke
+        }
+    }
+
     private boolean isRectInsideRect(float innerX, float innerY, float innerWidth, float innerHeight,
-                                    float outerX, float outerY, float outerWidth, float outerHeight) {
+                                     float outerX, float outerY, float outerWidth, float outerHeight) {
 
         return innerX >= outerX &&
             innerY >= outerY &&
@@ -111,6 +138,7 @@ public class Main5 extends ApplicationAdapter {
         shapeRenderer.dispose();
         batch.dispose();
         font.dispose();
+        collideSound.dispose();
     }
 
 }

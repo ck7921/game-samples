@@ -10,6 +10,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 
+/**
+ * show how to render text to the canvas
+ */
 public class Main4 extends ApplicationAdapter {
 
     private ShapeRenderer shapeRenderer;
