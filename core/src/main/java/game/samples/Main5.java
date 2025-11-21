@@ -72,24 +72,24 @@ public class Main5 extends ApplicationAdapter {
     private void handleInput() {
         // Bewegung mit Cursor-Tasten
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            final boolean isInside = isRectInsideRect(rectX, rectY+moveSpeed, 200, 200, 35, 55, 730, 485);
-            if(isInside) rectY += moveSpeed;
-                else rectY = 55 + 285;
+            final boolean isInside = isRectInsideRect(rectX, rectY + moveSpeed, 200, 200, 35, 55, 730, 485);
+            if (isInside) rectY += moveSpeed;
+            else rectY = 55 + 285;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            final boolean isInside = isRectInsideRect(rectX, rectY-moveSpeed, 200, 200, 35, 55, 730, 485);
-            if(isInside) rectY -= moveSpeed;
+            final boolean isInside = isRectInsideRect(rectX, rectY - moveSpeed, 200, 200, 35, 55, 730, 485);
+            if (isInside) rectY -= moveSpeed;
             else rectY = 55;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            final boolean isInside = isRectInsideRect(rectX-moveSpeed, rectY, 200, 200, 35, 55, 730, 485);
-            if(isInside) rectX -= moveSpeed;
+            final boolean isInside = isRectInsideRect(rectX - moveSpeed, rectY, 200, 200, 35, 55, 730, 485);
+            if (isInside) rectX -= moveSpeed;
             else rectX = 35;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            final boolean isInside = isRectInsideRect(rectX+moveSpeed, rectY, 200, 200, 35, 55, 730, 485);
-            if(isInside) rectX += moveSpeed;
-            else rectX = 35 + 730-200;
+            final boolean isInside = isRectInsideRect(rectX + moveSpeed, rectY, 200, 200, 35, 55, 730, 485);
+            if (isInside) rectX += moveSpeed;
+            else rectX = 35 + 730 - 200;
         }
 
         // Rechteck-Position aktualisieren
@@ -97,7 +97,7 @@ public class Main5 extends ApplicationAdapter {
     }
 
     private boolean isRectInsideRect(float innerX, float innerY, float innerWidth, float innerHeight,
-                                    float outerX, float outerY, float outerWidth, float outerHeight) {
+                                     float outerX, float outerY, float outerWidth, float outerHeight) {
 
         return innerX >= outerX &&
             innerY >= outerY &&

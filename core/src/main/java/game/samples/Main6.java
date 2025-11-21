@@ -80,34 +80,34 @@ public class Main6 extends ApplicationAdapter {
     private void handleInput() {
         // Bewegung mit Cursor-Tasten
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            final boolean isInside = isRectInsideRect(rectX, rectY+moveSpeed, 200, 200, 35, 55, 730, 485);
-            if(isInside) rectY += moveSpeed;
+            final boolean isInside = isRectInsideRect(rectX, rectY + moveSpeed, 200, 200, 35, 55, 730, 485);
+            if (isInside) rectY += moveSpeed;
             else {
                 rectY = 55 + 285;
                 playSound(0);
             }
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            final boolean isInside = isRectInsideRect(rectX, rectY-moveSpeed, 200, 200, 35, 55, 730, 485);
-            if(isInside) rectY -= moveSpeed;
+            final boolean isInside = isRectInsideRect(rectX, rectY - moveSpeed, 200, 200, 35, 55, 730, 485);
+            if (isInside) rectY -= moveSpeed;
             else {
                 rectY = 55;
                 playSound(1);
             }
         }
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            final boolean isInside = isRectInsideRect(rectX-moveSpeed, rectY, 200, 200, 35, 55, 730, 485);
-            if(isInside) rectX -= moveSpeed;
+            final boolean isInside = isRectInsideRect(rectX - moveSpeed, rectY, 200, 200, 35, 55, 730, 485);
+            if (isInside) rectX -= moveSpeed;
             else {
                 rectX = 35;
                 playSound(2);
             }
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            final boolean isInside = isRectInsideRect(rectX+moveSpeed, rectY, 200, 200, 35, 55, 730, 485);
-            if(isInside) rectX += moveSpeed;
+            final boolean isInside = isRectInsideRect(rectX + moveSpeed, rectY, 200, 200, 35, 55, 730, 485);
+            if (isInside) rectX += moveSpeed;
             else {
-                rectX = 35 + 730-200;
+                rectX = 35 + 730 - 200;
                 playSound(3);
             }
         }
@@ -117,7 +117,7 @@ public class Main6 extends ApplicationAdapter {
     }
 
     private void playSound(int side) {
-        if(collisionOnSide!=side) {
+        if (collisionOnSide != side) {
             collisionOnSide = side;
             collideSound.play(1.0f); // 1.0f = volle Lautstärke
         }
