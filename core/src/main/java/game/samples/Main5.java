@@ -51,12 +51,12 @@ public class Main5 extends ApplicationAdapter {
         shapeRenderer.rect(20, 540, 760, 15); // top
         shapeRenderer.rect(20, 40, 15, 500); // left
         shapeRenderer.rect(765, 40, 15, 500); // right
+        // draw collider line
         shapeRenderer.setColor(Color.RED);
         shapeRenderer.rect(35, 55, 1, 485); // left
         shapeRenderer.rect(765, 55, 1, 485); // right
         shapeRenderer.rect(35, 540, 730, 1); // top
         shapeRenderer.rect(35, 55, 730, 1); // bottom
-
         shapeRenderer.end();
 
         // draw text
